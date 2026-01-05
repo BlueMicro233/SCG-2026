@@ -8,22 +8,39 @@
     <style>
         body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; }
         .container { max-width: 960px; margin-top: 40px; margin-bottom: 60px; }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 30px; font-weight: bold; }
+        h1 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 30px; font-weight: bold; font-size: 1.75rem; }
         h2 { margin-top: 40px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         
-        .course-logo { width: 140px; height: auto; transition: transform 0.3s; display: block; margin: 0 auto; }
+        /* Logo 响应式处理 */
+        .course-logo { width: 120px; height: auto; transition: transform 0.3s; display: block; margin: 10px auto; }
         .course-logo:hover { transform: rotate(-5deg); }
         
-        .table th { background-color: #f8f9fa; vertical-align: middle; }
+        .table th { background-color: #f8f9fa; vertical-align: middle; white-space: nowrap; }
         .table td { vertical-align: middle; }
         
+        /* 链接样式与移动端换行修复 */
         a { color: inherit; text-decoration: none; }
         .instructor-link { 
             color: #0056b3 !important; 
             pointer-events: auto !important; 
-            cursor: pointer !important; 
+            cursor: pointer !important;
+            /* 防止手机端长文本溢出 */
+            word-break: break-all; 
+            overflow-wrap: break-word;
         }
         .instructor-link:hover { text-decoration: underline !important; }
+
+        /* 项目卡片微调 */
+        .project-alert {
+            background-color: #fcfcfc;
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; text-align: center; }
+            .header-text { text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -31,14 +48,14 @@
 <div class="container">
     
     <div class="row align-items-center">
-        <div class="col-md-9">
+        <div class="col-md-9 header-text">
             <h1>起源引擎图形学基础 2026</h1>
             <p class="lead"><strong>Disclaimer:</strong> 本课程不属于任何学校或商业组织</p>
             <p><strong>讲师:</strong> <a href="https://space.bilibili.com/370118971/dynamic" class="instructor-link">@布朗尼蛋糕_Official</a> </p>
             <p><strong>上课时间:</strong> 待定 / 线上录播</p>
             <p><strong>课程地点:</strong> bilibili 直播间</p>
         </div>
-        <div class="col-md-3 text-center">
+        <div class="col-md-3">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Orange_lambda.svg" alt="Lambda Logo" class="course-logo">
         </div>
     </div>
@@ -47,16 +64,16 @@
         <h2>Introduction</h2>
         <p>本课程将深入探讨 Source Engine 背后的图形学原理以及实现技术。我们将从基础数学入手，逐步深入到渲染管线、光照模型以及着色技术，解析经典游戏引擎如何构建逼真的虚拟世界，并掌握图形开发的基本思想与工具。</p>
 
-        <div class="alert alert-light border-secondary shadow-sm" style="background-color: #fcfcfc;">
-            <p style="margin-bottom: 5px;"><strong>配套实践项目</strong></p>
-            <a href="https://github.com/BlueMicro233/gmod_shader_guide_CN" class="instructor-link" style="font-size: 1.1em; display: inline-flex; align-items: center;">
-                <svg height="20" viewBox="0 0 16 16" width="20" style="margin-right: 8px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-                BlueMicro233/gmod_shader_guide_CN
+        <div class="alert alert-light border-secondary shadow-sm project-alert">
+            <p style="margin-bottom: 8px;"><strong>配套实践项目</strong></p>
+            <a href="https://github.com/BlueMicro233/gmod_shader_guide_CN" class="instructor-link" style="font-size: 1.1em; display: inline-flex; align-items: flex-start;">
+                <svg height="24" viewBox="0 0 16 16" width="24" style="margin-right: 10px; flex-shrink: 0; margin-top: 2px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                <span>BlueMicro233/gmod_shader_guide_CN</span>
             </a>
-            <p class="text-muted small" style="margin-top: 5px; margin-bottom: 0;">它同时是 <strong>Lecture 3 - 渲染管线与图形处理器</strong> 的配套材料</p>
+            <p class="text-muted small" style="margin-top: 10px; margin-bottom: 0;">它同时是 <strong>Lecture 3 - 渲染管线与图形处理器</strong> 的配套材料</p>
         </div>
         
-        <p>课程以轻松愉快地求知为主。欢迎加入我的小群 <strong>849382163</strong> 与其他人一起聊天！</p>
+        <p>课程以轻松愉快地求知为主。欢迎加入我的小群 <strong>849382163</strong> 与其他爱好者一起交流！</p>
     </section>
 
     <section>
@@ -66,8 +83,8 @@
                 <thead>
                     <tr>
                         <th style="width: 10%" class="text-center"> Lecture </th>
-                        <th style="width: 20%"> 主题 </th>
-                        <th style="width: 70%"> 细节 </th>
+                        <th style="width: 25%"> 主题 </th>
+                        <th style="width: 65%"> 细节 </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,7 +101,7 @@
                     <tr>
                         <td class="text-center fw-bold">3</td>
                         <td>渲染管线与图形处理器<br><small class="text-muted">Pipeline & GPU</small></td>
-                        <td>CPU 阶段、顶点着色阶段、光栅化阶段、像素着色阶段、混合阶段、GPU 架构、并行优化、内存模型，实例化渲染、《半条命 2》时代的状况</td>
+                        <td>CPU 阶段、顶点着色阶段、光栅化阶段、像素着色阶段、混合阶段、GPU 架构、并行优化、内存模型，实例化渲染、《半条命 2》时代的现状</td>
                     </tr>
                     <tr>
                         <td class="text-center fw-bold">4</td>
